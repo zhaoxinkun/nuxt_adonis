@@ -23,12 +23,12 @@ export interface Registry {
     methods: ["POST"]
     pattern: '/category'
     types: {
-      body: {}
+      body: ExtractBody<InferInput<(typeof import('#validators/category').createCategoryValidator)>>
       paramsTuple: []
       params: {}
-      query: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/category').createCategoryValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['store']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'category.show': {
