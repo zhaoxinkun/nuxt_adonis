@@ -7,6 +7,66 @@ import type { InferInput, SimpleError } from '@vinejs/vine/types'
 export type ParamValue = string | number | bigint | boolean
 
 export interface Registry {
+  'category.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/category'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['index']>>>
+    }
+  }
+  'category.store': {
+    methods: ["POST"]
+    pattern: '/category'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['store']>>>
+    }
+  }
+  'category.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/category/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['show']>>>
+    }
+  }
+  'category.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/category/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['update']>>>
+    }
+  }
+  'category.destroy': {
+    methods: ["DELETE"]
+    pattern: '/category/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['destroy']>>>
+    }
+  }
   'auth.new_account.store': {
     methods: ["POST"]
     pattern: '/api/v1/auth/signup'

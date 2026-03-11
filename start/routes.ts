@@ -7,13 +7,27 @@
 |
 */
 
-import { middleware } from '#start/kernel'
+import {middleware} from '#start/kernel'
 import router from '@adonisjs/core/services/router'
-import { controllers } from '#generated/controllers'
+import {controllers} from '#generated/controllers'
+
+// 按需加载
+const CategoriesController = controllers.Categories
 
 router.get('/', () => {
-  return { hello: 'world' }
+  return {hello: 'world'}
 })
+
+// 单独配置路由
+// router.get('/category', () => {
+//   return {
+//     hello: "category",
+//   }
+// })
+
+// 直接把控制器配过来,使用控制器路由
+router.resource('category', CategoriesController).apiOnly()
+
 
 router
   .group(() => {

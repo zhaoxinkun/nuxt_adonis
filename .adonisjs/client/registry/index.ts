@@ -6,6 +6,36 @@ import type { ApiDefinition } from './tree.d.ts'
 const placeholder: any = {}
 
 const routes = {
+  'category.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/category',
+    tokens: [{"old":"/category","type":0,"val":"category","end":""}],
+    types: placeholder as Registry['category.index']['types'],
+  },
+  'category.store': {
+    methods: ["POST"],
+    pattern: '/category',
+    tokens: [{"old":"/category","type":0,"val":"category","end":""}],
+    types: placeholder as Registry['category.store']['types'],
+  },
+  'category.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/category/:id',
+    tokens: [{"old":"/category/:id","type":0,"val":"category","end":""},{"old":"/category/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['category.show']['types'],
+  },
+  'category.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/category/:id',
+    tokens: [{"old":"/category/:id","type":0,"val":"category","end":""},{"old":"/category/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['category.update']['types'],
+  },
+  'category.destroy': {
+    methods: ["DELETE"],
+    pattern: '/category/:id',
+    tokens: [{"old":"/category/:id","type":0,"val":"category","end":""},{"old":"/category/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['category.destroy']['types'],
+  },
   'auth.new_account.store': {
     methods: ["POST"],
     pattern: '/api/v1/auth/signup',
