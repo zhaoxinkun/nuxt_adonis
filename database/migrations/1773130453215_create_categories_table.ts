@@ -1,4 +1,4 @@
-import {BaseSchema} from '@adonisjs/lucid/schema'
+import { BaseSchema } from '@adonisjs/lucid/schema'
 
 export default class extends BaseSchema {
   protected tableName = 'categories'
@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id')
 
       table.string('title', 100).notNullable()
-      table.integer("parent_id").nullable().defaultTo(0)
+      table.integer('parent_id').nullable().defaultTo(0)
       table.timestamp('created_at')
       table.timestamp('updated_at')
     })

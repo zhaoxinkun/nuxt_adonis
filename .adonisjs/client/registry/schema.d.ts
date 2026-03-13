@@ -47,12 +47,12 @@ export interface Registry {
     methods: ["PUT","PATCH"]
     pattern: '/category/:id'
     types: {
-      body: {}
+      body: ExtractBody<InferInput<(typeof import('#validators/category').updateCategoryValidator)>>
       paramsTuple: [ParamValue]
       params: { id: ParamValue }
-      query: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/category').updateCategoryValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['update']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/categories_controller').default['update']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'category.destroy': {

@@ -1,3 +1,6 @@
 .adonisjs
 node_modules
 build
+tmp
+public/assets
+pnpm-lock.yaml

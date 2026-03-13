@@ -1,10 +1,9 @@
-import {CategorySchema} from '#database/schema'
-import {column} from "@adonisjs/lucid/orm";
-import {DateTime} from "luxon";
+import { CategorySchema } from '#database/schema'
+import { column } from '@adonisjs/lucid/orm'
+import { DateTime } from 'luxon'
 
 export default class Category extends CategorySchema {
-
-  @column({isPrimary: true})
+  @column({ isPrimary: true })
   declare id: number
 
   @column()
@@ -13,10 +12,9 @@ export default class Category extends CategorySchema {
   @column()
   declare title: string
 
-  @column.dateTime({autoCreate: true})
+  @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime | null
 
-  @column.dateTime({autoCreate: true, autoUpdate: true})
+  @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime | null
-
 }
