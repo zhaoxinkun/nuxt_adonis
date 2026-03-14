@@ -12,7 +12,7 @@ import router from '@adonisjs/core/services/router'
 import { controllers } from '#generated/controllers'
 
 // 按需加载
-const CategoriesController = controllers.Categories
+const CategoriesController = () => import('#controllers/categories_controller')
 
 router.get('/', () => {
   return { hello: 'world' }
