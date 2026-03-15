@@ -1,7 +1,29 @@
-export const validators = {
+export const validatorsMessages = {
   minLength: '全局 字段 {{ field }} 长度不能小于 {{ min }} 个字符',
   maxLength: '全局 字段 {{ field }} 长度不能大于 {{ max }} 个字符',
+  required: '{{ field }}不能为空',
+  string: '{{ field }}必须是字符串',
+  number: '{{ field }}必须是数字',
+  boolean: '{{ field }}必须是布尔值',
+  array: '{{ field }}必须是数组',
+  object: '{{ field }}必须是对象',
+  email: '{{ field }}必须是合法的邮箱地址',
+  url: '{{ field }}必须是合法的链接',
+  min: '{{ field }}不能小于{{ min }}',
+  max: '{{ field }}不能大于{{ max }}',
+  range: '{{ field }}必须在{{ min }}到{{ max }}之间',
+  confirmed: '{{ field }}两次输入不一致',
+  sameAs: '{{ field }}必须和指定字段一致',
+  distinct: '{{ field }}不能重复',
+  mobile: '{{ field }}必须是合法手机号',
+  regex: '{{ field }}格式不正确',
 }
 export const validatorsFields = {
+  username: '用户名',
+  email: '邮箱',
+  password: '密码',
   title: '标题',
+  content: '内容',
+  sort: '排序值',
+  status: '状态',
 }

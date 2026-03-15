@@ -21,7 +21,7 @@ export default class CategoriesController {
   async store({ request }: HttpContext) {
     // 1. 验证器的分开写法
     // const data = request.all()
-    // const payload =await createCategoryValidator.validate(data)
+    // const payload = await createCategoryValidator.validate(data)
 
     // 2. 验证器的直接写法
     const payload = await request.validateUsing(createCategoryValidator, {
@@ -36,7 +36,14 @@ export default class CategoriesController {
       // 提取出来的方式使用
       messagesProvider: createCategoryValidatorMessages,
     })
-    return await Category.create(payload)
+
+    // const payload2 = await formValidator(
+
+    const data = await Category.create(payload)
+    return {
+      payload,
+      data,
+    }
   }
 
   // 查找数据
