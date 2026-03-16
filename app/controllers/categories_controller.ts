@@ -43,6 +43,7 @@ export default class CategoriesController {
     return {
       payload,
       data,
+      request,
     }
   }
 
@@ -55,9 +56,12 @@ export default class CategoriesController {
   // }
 
   // 更新数据
-  async update({ params, request }: HttpContext) {
+  async update({ params, request, request: { hostname } }: HttpContext) {
     const payload = await request.validateUsing(updateCategoryValidator, {
       messagesProvider: createCategoryValidatorMessages,
+      meta: {
+        hostname,
+      },
     })
     return await Category.findOrFail(params.id).then(async (category) => {
       category.merge(payload)
@@ -65,6 +69,7 @@ export default class CategoriesController {
     })
   }
 
+  // 删除数据
   async destroy({ params }: HttpContext) {
     return await Category.findOrFail(params.id).then(async (category) => {
       return await category.delete()
