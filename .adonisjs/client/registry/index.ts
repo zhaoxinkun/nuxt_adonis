@@ -36,6 +36,18 @@ const routes = {
     tokens: [{"old":"/category/:id","type":0,"val":"category","end":""},{"old":"/category/:id","type":1,"val":"id","end":""}],
     types: placeholder as Registry['category.destroy']['types'],
   },
+  'auth.login': {
+    methods: ["POST"],
+    pattern: '/auth/login',
+    tokens: [{"old":"/auth/login","type":0,"val":"auth","end":""},{"old":"/auth/login","type":0,"val":"login","end":""}],
+    types: placeholder as Registry['auth.login']['types'],
+  },
+  'auth.register': {
+    methods: ["POST"],
+    pattern: '/auth/register',
+    tokens: [{"old":"/auth/register","type":0,"val":"auth","end":""},{"old":"/auth/register","type":0,"val":"register","end":""}],
+    types: placeholder as Registry['auth.register']['types'],
+  },
   'auth.new_account.store': {
     methods: ["POST"],
     pattern: '/api/v1/auth/signup',

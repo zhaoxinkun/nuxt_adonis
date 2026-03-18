@@ -9,6 +9,8 @@ export type ScannedRoutes = {
     'category.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'category.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'category.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
+    'auth.login': { paramsTuple?: []; params?: {} }
+    'auth.register': { paramsTuple?: []; params?: {} }
     'auth.new_account.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
@@ -26,6 +28,8 @@ export type ScannedRoutes = {
   }
   POST: {
     'category.store': { paramsTuple?: []; params?: {} }
+    'auth.login': { paramsTuple?: []; params?: {} }
+    'auth.register': { paramsTuple?: []; params?: {} }
     'auth.new_account.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.store': { paramsTuple?: []; params?: {} }
     'auth.access_token.destroy': { paramsTuple?: []; params?: {} }

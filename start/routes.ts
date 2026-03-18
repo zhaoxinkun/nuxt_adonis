@@ -10,6 +10,7 @@
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 import { controllers } from '#generated/controllers'
+const AuthController = () => import('#controllers/auth_controller')
 
 // 按需加载
 const CategoriesController = () => import('#controllers/categories_controller')
@@ -27,6 +28,14 @@ router.get('/', () => {
 
 // 直接把控制器配过来,使用控制器路由
 router.resource('category', CategoriesController).apiOnly()
+
+// auth路由
+router
+  .group(() => {
+    router.post('login', [AuthController, 'login'])
+    router.post('register', [AuthController, 'register'])
+  })
+  .prefix('/auth')
 
 router
   .group(() => {

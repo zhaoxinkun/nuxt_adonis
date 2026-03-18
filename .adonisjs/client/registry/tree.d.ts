@@ -10,6 +10,8 @@ export interface ApiDefinition {
     destroy: typeof routes['category.destroy']
   }
   auth: {
+    login: typeof routes['auth.login']
+    register: typeof routes['auth.register']
     newAccount: {
       store: typeof routes['auth.new_account.store']
     }
