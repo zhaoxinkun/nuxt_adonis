@@ -1,7 +1,7 @@
 import { type HttpContext } from '@adonisjs/core/http'
 import BasesController from '#controllers/bases_controller'
 import User from '#models/user'
-import { loginValidator } from '#validators/auth'
+import { loginValidator, registerValidator } from '#validators/auth'
 
 export default class AuthController extends BasesController {
   // 登陆接口
@@ -42,7 +42,10 @@ export default class AuthController extends BasesController {
 
   // 注册接口
   async register(ctx: HttpContext) {
-    const { username, password } = ctx.request.only(['username', 'password'])
+    // 验证请求体
+    await ctx.request.validateUsing(registerValidator)
+    const { username, password } = await ctx.request.validateUsing(registerValidator)
+
     // 先验证看看数据库里有没有
     const exists = await User.findBy('username', username)
     if (exists) return this.error(ctx, 409, 'Username already exists')

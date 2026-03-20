@@ -83,12 +83,12 @@ export interface Registry {
     methods: ["POST"]
     pattern: '/auth/register'
     types: {
-      body: {}
+      body: ExtractBody<InferInput<(typeof import('#validators/auth').registerValidator)>|InferInput<(typeof import('#validators/auth').registerValidator)>>
       paramsTuple: []
       params: {}
-      query: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/auth').registerValidator)>|InferInput<(typeof import('#validators/auth').registerValidator)>>
       response: ExtractResponse<Awaited<ReturnType<import('#controllers/auth_controller').default['register']>>>
-      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/auth_controller').default['register']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/auth_controller').default['register']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
   'auth.new_account.store': {
