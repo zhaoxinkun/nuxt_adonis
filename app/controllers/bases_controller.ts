@@ -6,19 +6,34 @@ import { inject } from '@adonisjs/core'
 export default abstract class BasesController {
   // constructor(protected ctx: HttpContext) {}
 
-  error(ctx: HttpContext, status: number, message: string): unknown
-  error(status: number, message: string): { status: number; message: string }
+  // 重载签名
+  // error(ctx: HttpContext, status: number, message: string): unknown
+  // error(status: number, message: string): { status: number; message: string }
+  // 重载实现
+  // error(arg1: HttpContext | number, arg2: number | string, arg3?: string) {
+  //   if (typeof arg1 === 'number') {
+  //     return {
+  //       status: arg1,
+  //       message: `Expected ${arg1} to be a number`,
+  //     }
+  //   }
+  //   return arg1.response.status(arg2 as number).json({
+  //     status: arg2,
+  //     message: `Expecting ${arg2} to be ${arg3}`,
+  //   })
+  // }
 
+  // 不使用重载
   error(arg1: HttpContext | number, arg2: number | string, arg3?: string) {
     if (typeof arg1 === 'number') {
       return {
         status: arg1,
-        message: `Expecting ${arg1} to be ${arg2}`,
+        message: `Invalid parameter ${arg2}.`,
       }
     }
     return arg1.response.status(arg2 as number).json({
       status: arg2,
-      message: `Expecting ${arg2} to be ${arg3}`,
+      message: `Invalid parameter ${arg3}.`,
     })
   }
   // error(ctx: HttpContext, error?: unknown) {

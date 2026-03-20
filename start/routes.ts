@@ -19,17 +19,17 @@ router.get('/', () => {
   return { hello: 'world' }
 })
 
-// 单独配置路由
+// 1. 单独配置路由
 // router.get('/category', () => {
 //   return {
 //     hello: "category",
 //   }
 // })
 
-// 直接把控制器配过来,使用控制器路由
+// 2. 直接把控制器配过来,使用控制器路由
 router.resource('category', CategoriesController).apiOnly()
 
-// auth路由
+// 3. 配置auth路由组
 router
   .group(() => {
     router.post('login', [AuthController, 'login'])
