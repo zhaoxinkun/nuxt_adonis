@@ -1,34 +1,43 @@
 import { type HttpContext } from '@adonisjs/core/http'
 import BasesController from '#controllers/bases_controller'
 import User from '#models/user'
-import hash from '@adonisjs/core/services/hash'
+import { loginValidator } from '#validators/auth'
 
 export default class AuthController extends BasesController {
   // 登陆接口
-  async login(ctx: HttpContext) {
-    const { username, password } = ctx.request.only(['username', 'password'])
+  async login({ request, auth }: HttpContext) {
+    // 验证请求体
+    const { username, password } = await request.validateUsing(loginValidator)
 
-    const user = await User.findBy('username', username)
-    if (!user) return this.error(ctx, 404, '用户不存在')
-    else if (!(await hash.verify(user.password, password))) return this.error(ctx, 401, '密码错误')
-    // 生成token
-    const token = await User.accessTokens.create(user)
-    return {
-      token,
-      status: 200,
-      body: JSON.stringify({ username, password }),
-    }
-
-    // 上边写这么多,累不累?累,就简化一下
-    // const user = await User.verifyCredentials(username, password)
+    // 复杂版的token
+    // const user = await User.findBy('username', username)
+    // if (!user) return this.error(ctx, 404, '用户不存在')
+    // else if (!(await hash.verify(user.password, password))) return this.error(ctx, 401, '密码错误')
+    // // 生成token
     // const token = await User.accessTokens.create(user)
     // return {
-    //   status: 'ok',
-    //   data: {
-    //     user,
-    //     token,
-    //   },
+    //   token,
+    //   status: 200,
+    //   body: JSON.stringify({ username, password }),
     // }
+
+    // 上边写这么多,累不累?累,就简化一下
+    try {
+      const user = await User.verifyCredentials(username, password)
+      // 1. 使用模型创建token
+      // const token = await User.accessTokens.create(user)
+      //2. 使用auth创建token
+      const token = await auth.use('api').createToken(user)
+      return {
+        status: 'ok',
+        data: {
+          user,
+          token,
+        },
+      }
+    } catch (error) {
+      return this.error(422, '账号或密码错误')
+    }
   }
 
   // 注册接口

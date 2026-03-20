@@ -27,8 +27,10 @@ router.get('/', () => {
 // })
 
 // 2. 直接把控制器配过来,使用控制器路由
-router.resource('category', CategoriesController).apiOnly()
-
+router
+  .resource('category', CategoriesController)
+  .apiOnly()
+  .use(['store', 'destroy', 'update'], [middleware.auth(), middleware.admin()]) //使用中间件验证是否登陆
 // 3. 配置auth路由组
 router
   .group(() => {

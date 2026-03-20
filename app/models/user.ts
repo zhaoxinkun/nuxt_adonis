@@ -5,7 +5,9 @@ import { withAuthFinder } from '@adonisjs/auth/mixins/lucid'
 import { type AccessToken, DbAccessTokensProvider } from '@adonisjs/auth/access_tokens'
 import { column } from '@adonisjs/lucid/orm'
 import { DateTime } from 'luxon'
+import { Role } from '#enums/roles'
 
+// 认证的方式
 const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
   uids: ['username'],
   passwordColumnName: 'password',
@@ -20,6 +22,9 @@ export default class User extends compose(UserSchema, AuthFinder) {
 
   @column()
   declare password: string
+
+  @column()
+  declare role: Role
 
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare createdAt: DateTime
