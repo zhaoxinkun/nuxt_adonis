@@ -6,14 +6,13 @@
 | The routes file is used for defining the HTTP routes.
 |
 */
-
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
 import { controllers } from '#generated/controllers'
-const AuthController = () => import('#controllers/auth_controller')
 
 // 按需加载
 const CategoriesController = () => import('#controllers/categories_controller')
+const AuthController = () => import('#controllers/auth_controller')
 
 router.get('/', () => {
   return { hello: 'world' }
@@ -31,6 +30,7 @@ router
   .resource('category', CategoriesController)
   .apiOnly()
   .use(['store', 'destroy', 'update'], [middleware.auth(), middleware.admin()]) //使用中间件验证是否登陆
+
 // 3. 配置auth路由组
 router
   .group(() => {

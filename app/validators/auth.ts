@@ -2,7 +2,7 @@ import vine from '@vinejs/vine'
 
 const baseValidator = {
   username: vine.string().minLength(3).maxLength(20),
-  password: vine.string().minLength(6).maxLength(20),
+  password: vine.string().minLength(3).maxLength(20),
 }
 
 export const loginValidator = vine.create({
