@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import type { NextFn } from '@adonisjs/core/types/http'
 import { Role } from '#enums/roles'
+import { Exception } from '@adonisjs/core/exceptions'
 
 export default class AdminMiddleware {
   async handle(ctx: HttpContext, next: NextFn) {
@@ -12,8 +13,10 @@ export default class AdminMiddleware {
     const user = await ctx.auth.authenticate()
     console.log('🚀 ~ handle ~ user: ', user)
     if (user.role !== Role.Admin) {
-      ctx.response.status(403).send({ message: 'You are not an admin' })
-      return
+      throw new Exception('You are not an admin', {
+        status: 403,
+        code: 'E_NOT_ADMIN',
+      })
     }
 
     /**

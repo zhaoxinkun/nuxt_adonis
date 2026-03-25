@@ -1,5 +1,6 @@
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
+// 栏目表
 export default class extends BaseSchema {
   protected tableName = 'categories'
 

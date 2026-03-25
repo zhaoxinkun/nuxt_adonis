@@ -28,12 +28,12 @@ export default abstract class BasesController {
     if (typeof arg1 === 'number') {
       return {
         status: arg1,
-        message: `Invalid parameter ${arg2}.`,
+        message: String(arg2),
       }
     }
     return arg1.response.status(arg2 as number).json({
       status: arg2,
-      message: `Invalid parameter ${arg3}.`,
+      message: String(arg3),
     })
   }
   // error(ctx: HttpContext, error?: unknown) {

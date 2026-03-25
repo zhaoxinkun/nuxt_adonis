@@ -1,7 +1,7 @@
 import factory from '@adonisjs/lucid/factories'
 import User from '#models/user'
 import { Role } from '#enums/roles'
-
+// 用户数据工厂
 export const UserFactory = factory
   .define(User, async ({ faker }) => {
     return {

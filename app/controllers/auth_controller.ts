@@ -9,7 +9,7 @@ export default class AuthController extends BasesController {
     // 验证请求体
     const { username, password } = await request.validateUsing(loginValidator)
 
-    // 复杂版的token
+    // 1. 复杂版的token认证流程
     // const user = await User.findBy('username', username)
     // if (!user) return this.error(ctx, 404, '用户不存在')
     // else if (!(await hash.verify(user.password, password))) return this.error(ctx, 401, '密码错误')
@@ -21,12 +21,12 @@ export default class AuthController extends BasesController {
     //   body: JSON.stringify({ username, password }),
     // }
 
-    // 上边写这么多,累不累?累,就简化一下
+    // 2. 上边写这么多,累不累?累,就简化一下
     try {
       const user = await User.verifyCredentials(username, password)
-      // 1. 使用模型创建token
+      // 创建token 方式一 :使用模型创建token
       // const token = await User.accessTokens.create(user)
-      //2. 使用auth创建token
+      // 创建token 方式二 :使用auth创建token
       const token = await auth.use('api').createToken(user)
       return {
         status: 'ok',
