@@ -18,6 +18,7 @@ export const loginValidator = vine.create({
       if (!user) throw new Error('Username not found')
       return user
     }),
+  password: vine.string().minLength(3).maxLength(20).confirmed(),
 })
 
 export const registerValidator = vine.create({
