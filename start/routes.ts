@@ -8,7 +8,7 @@
 */
 import { middleware } from '#start/kernel'
 import router from '@adonisjs/core/services/router'
-import { controllers } from '#generated/controllers'
+// import { controllers } from '#generated/controllers'
 
 // 按需加载
 const CategoriesController = () => import('#controllers/categories_controller')
@@ -39,23 +39,23 @@ router
   })
   .prefix('/auth')
 
-router
-  .group(() => {
-    router
-      .group(() => {
-        router.post('signup', [controllers.NewAccount, 'store'])
-        router.post('login', [controllers.AccessToken, 'store'])
-        router.post('logout', [controllers.AccessToken, 'destroy']).use(middleware.auth())
-      })
-      .prefix('auth')
-      .as('auth')
-
-    router
-      .group(() => {
-        router.get('/profile', [controllers.Profile, 'show'])
-      })
-      .prefix('account')
-      .as('profile')
-      .use(middleware.auth())
-  })
-  .prefix('/api/v1')
+// router
+//   .group(() => {
+//     router
+//       .group(() => {
+//         router.post('signup', [controllers.NewAccount, 'store'])
+//         router.post('login', [controllers.AccessToken, 'store'])
+//         router.post('logout', [controllers.AccessToken, 'destroy']).use(middleware.auth())
+//       })
+//       .prefix('auth')
+//       .as('auth')
+//
+//     router
+//       .group(() => {
+//         router.get('/profile', [controllers.Profile, 'show'])
+//       })
+//       .prefix('account')
+//       .as('profile')
+//       .use(middleware.auth())
+//   })
+//   .prefix('/api/v1')

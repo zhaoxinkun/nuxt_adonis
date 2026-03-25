@@ -12,17 +12,5 @@ export interface ApiDefinition {
   auth: {
     login: typeof routes['auth.login']
     register: typeof routes['auth.register']
-    newAccount: {
-      store: typeof routes['auth.new_account.store']
-    }
-    accessToken: {
-      store: typeof routes['auth.access_token.store']
-      destroy: typeof routes['auth.access_token.destroy']
-    }
-  }
-  profile: {
-    profile: {
-      show: typeof routes['profile.profile.show']
-    }
   }
 }

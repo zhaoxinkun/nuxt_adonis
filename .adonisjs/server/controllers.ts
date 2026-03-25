@@ -10,4 +10,5 @@ export const controllers = {
   Categories: () => import('#controllers/categories_controller'),
   NewAccount: () => import('#controllers/new_account_controller'),
   Profile: () => import('#controllers/profile_controller'),
+  Articles: () => import('#controllers/articles_controller'),
 }

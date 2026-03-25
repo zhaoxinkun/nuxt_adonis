@@ -16,7 +16,7 @@ export const loginValidator = vine.create({
     .exists(async (db, value) => {
       const user = await db.from('users').where('username', value).first()
       if (!user) throw new Error('Username not found')
-      return true
+      return user
     }),
 })
 

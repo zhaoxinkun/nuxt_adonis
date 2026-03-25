@@ -11,28 +11,19 @@ export type ScannedRoutes = {
     'category.destroy': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
     'auth.login': { paramsTuple?: []; params?: {} }
     'auth.register': { paramsTuple?: []; params?: {} }
-    'auth.new_account.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
-    'profile.profile.show': { paramsTuple?: []; params?: {} }
   }
   GET: {
     'category.index': { paramsTuple?: []; params?: {} }
     'category.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'profile.profile.show': { paramsTuple?: []; params?: {} }
   }
   HEAD: {
     'category.index': { paramsTuple?: []; params?: {} }
     'category.show': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }
-    'profile.profile.show': { paramsTuple?: []; params?: {} }
   }
   POST: {
     'category.store': { paramsTuple?: []; params?: {} }
     'auth.login': { paramsTuple?: []; params?: {} }
     'auth.register': { paramsTuple?: []; params?: {} }
-    'auth.new_account.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.store': { paramsTuple?: []; params?: {} }
-    'auth.access_token.destroy': { paramsTuple?: []; params?: {} }
   }
   PUT: {
     'category.update': { paramsTuple: [ParamValue]; params: {'id': ParamValue} }

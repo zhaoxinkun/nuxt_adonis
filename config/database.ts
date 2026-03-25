@@ -1,4 +1,3 @@
-import app from '@adonisjs/core/services/app'
 import { defineConfig } from '@adonisjs/lucid'
 import env from '#start/env'
 
@@ -8,7 +7,7 @@ const dbConfig = defineConfig({
    * Default connection used for all queries.
    */
   connection: 'mysql',
-
+  // prettyPrintDebugQueries: true,
   connections: {
     /**
      * SQLite connection (default).
@@ -91,7 +90,7 @@ const dbConfig = defineConfig({
         naturalSort: true,
         paths: ['database/migrations'],
       },
-      debug: app.inDev,
+      debug: true,
     },
 
     /**
