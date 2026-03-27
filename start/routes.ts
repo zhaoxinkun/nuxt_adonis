@@ -13,6 +13,7 @@ import router from '@adonisjs/core/services/router'
 // 按需加载
 const CategoriesController = () => import('#controllers/categories_controller')
 const AuthController = () => import('#controllers/auth_controller')
+const ArticlesController = () => import('#controllers/articles_controller')
 
 router.get('/', () => {
   return { hello: 'world' }
@@ -39,6 +40,10 @@ router
   })
   .prefix('/auth')
 
+router
+  .resource('article', ArticlesController)
+  .apiOnly()
+  .use(['store', 'destroy', 'update'], [middleware.auth(), middleware.admin()])
 // router
 //   .group(() => {
 //     router

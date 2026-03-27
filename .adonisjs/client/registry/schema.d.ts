@@ -91,4 +91,64 @@ export interface Registry {
       errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/auth_controller').default['register']>>> | { status: 422; response: { errors: SimpleError[] } }
     }
   }
+  'article.index': {
+    methods: ["GET","HEAD"]
+    pattern: '/article'
+    types: {
+      body: {}
+      paramsTuple: []
+      params: {}
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['index']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['index']>>>
+    }
+  }
+  'article.store': {
+    methods: ["POST"]
+    pattern: '/article'
+    types: {
+      body: ExtractBody<InferInput<(typeof import('#validators/article').CreateArticleValidator)>>
+      paramsTuple: []
+      params: {}
+      query: ExtractQuery<InferInput<(typeof import('#validators/article').CreateArticleValidator)>>
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['store']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['store']>>> | { status: 422; response: { errors: SimpleError[] } }
+    }
+  }
+  'article.show': {
+    methods: ["GET","HEAD"]
+    pattern: '/article/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['show']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['show']>>>
+    }
+  }
+  'article.update': {
+    methods: ["PUT","PATCH"]
+    pattern: '/article/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['update']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['update']>>>
+    }
+  }
+  'article.destroy': {
+    methods: ["DELETE"]
+    pattern: '/article/:id'
+    types: {
+      body: {}
+      paramsTuple: [ParamValue]
+      params: { id: ParamValue }
+      query: {}
+      response: ExtractResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['destroy']>>>
+      errorResponse: ExtractErrorResponse<Awaited<ReturnType<import('#controllers/articles_controller').default['destroy']>>>
+    }
+  }
 }

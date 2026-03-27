@@ -13,4 +13,11 @@ export interface ApiDefinition {
     login: typeof routes['auth.login']
     register: typeof routes['auth.register']
   }
+  article: {
+    index: typeof routes['article.index']
+    store: typeof routes['article.store']
+    show: typeof routes['article.show']
+    update: typeof routes['article.update']
+    destroy: typeof routes['article.destroy']
+  }
 }

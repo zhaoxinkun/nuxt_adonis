@@ -48,6 +48,36 @@ const routes = {
     tokens: [{"old":"/auth/register","type":0,"val":"auth","end":""},{"old":"/auth/register","type":0,"val":"register","end":""}],
     types: placeholder as Registry['auth.register']['types'],
   },
+  'article.index': {
+    methods: ["GET","HEAD"],
+    pattern: '/article',
+    tokens: [{"old":"/article","type":0,"val":"article","end":""}],
+    types: placeholder as Registry['article.index']['types'],
+  },
+  'article.store': {
+    methods: ["POST"],
+    pattern: '/article',
+    tokens: [{"old":"/article","type":0,"val":"article","end":""}],
+    types: placeholder as Registry['article.store']['types'],
+  },
+  'article.show': {
+    methods: ["GET","HEAD"],
+    pattern: '/article/:id',
+    tokens: [{"old":"/article/:id","type":0,"val":"article","end":""},{"old":"/article/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['article.show']['types'],
+  },
+  'article.update': {
+    methods: ["PUT","PATCH"],
+    pattern: '/article/:id',
+    tokens: [{"old":"/article/:id","type":0,"val":"article","end":""},{"old":"/article/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['article.update']['types'],
+  },
+  'article.destroy': {
+    methods: ["DELETE"],
+    pattern: '/article/:id',
+    tokens: [{"old":"/article/:id","type":0,"val":"article","end":""},{"old":"/article/:id","type":1,"val":"id","end":""}],
+    types: placeholder as Registry['article.destroy']['types'],
+  },
 } as const satisfies Record<string, AdonisEndpoint>
 
 export { routes }

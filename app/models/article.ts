@@ -4,7 +4,7 @@ import { DateTime } from 'luxon'
 
 export default class Article extends ArticleSchema {
   @column()
-  declare categoryId: number
+  declare category_id: number
 
   @column()
   declare content: string
