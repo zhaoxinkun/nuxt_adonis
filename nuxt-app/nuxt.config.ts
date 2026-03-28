@@ -5,6 +5,15 @@ export default defineNuxtConfig({
     '@nuxt/ui'
   ],
 
+  // pages: {
+  //   pattern: ['**/*.vue', '!**/components/**/*.vue']
+  // },
+  //
+  // components: [
+  //   { path: '~/components' },
+  //   { path: '~/pages', pattern: '**/components/**/*.vue', pathPrefix: true }
+  // ],
+
   devtools: {
     enabled: true
   },
